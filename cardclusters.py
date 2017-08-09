@@ -88,7 +88,8 @@ class cardCluster:
 										  'toughness':card.toughness,
 										  'color_identity':card.color_identity,
 										  'type':card.type,
-										  'cmc':card.cmc} for card in self.AllCards}
+										  'cmc':card.cmc,
+										  'imageurl':card.image_url} for card in self.AllCards}
 
 	@timeit
 	# This compares the body of rules text if it exists and computes the pairwise cosine similarity

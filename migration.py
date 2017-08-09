@@ -43,6 +43,9 @@ class redisMigrate(cardCluster):
 		for key, values in sim_dict.items():
 			for i in range(len(values[0])):
 				r.zadd(':'.join(['multiverse_id', str(key)]), values[1][i], values[0][i])
+		# Stores the multiverse_id key and associated name and image url
+		for key, values in self.cards.items():
+			r.hmset(str(key), {props:value for props, value in values.items() if props in ('name', 'imageurl')})
 		return ('Migration completed.')
 
 if __name__ == '__main__':
