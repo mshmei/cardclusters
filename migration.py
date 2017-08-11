@@ -46,6 +46,7 @@ class redisMigrate(cardCluster):
 		# Stores the multiverse_id key and associated name and image url
 		for key, values in self.cards.items():
 			r.hmset(str(key), {props:value for props, value in values.items() if props in ('name', 'imageurl')})
+			r.sadd('cardnames', values['name'])
 		return ('Migration completed.')
 
 if __name__ == '__main__':
